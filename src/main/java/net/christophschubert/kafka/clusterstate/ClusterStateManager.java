@@ -119,11 +119,15 @@ public class ClusterStateManager {
         List<Action> actions = new ArrayList<>();
 
         //TODO: add logic to check for deletes
-        diff.deletedAclEntries.forEach(aclEntry -> actions.add(new DeleteAclAction(aclEntry)));
+        //TODO: add a CLI flag to give an option around deletes
+        // Removing temporarily to allow transition period
+        // diff.deletedAclEntries.forEach(aclEntry -> actions.add(new DeleteAclAction(aclEntry)));
         diff.addedAclEntries.forEach(aclEntry -> actions.add(new CreateAclAction(aclEntry)));
 
         //TODO: add logic to check for deletes
-        diff.deletedTopicNames.stream().forEach(topicName -> actions.add(new DeleteTopicAction(topicName)));
+        //TODO: add a CLI flag to give an option around deletes
+        // Removing temporarily to allow transition period
+        // diff.deletedTopicNames.stream().forEach(topicName -> actions.add(new DeleteTopicAction(topicName)));
         diff.addedTopics.forEach((topicName, topicDescription) -> actions.add(new CreateTopicAction(topicDescription)));
 
         diff.updatedTopicConfigs.values().stream()
